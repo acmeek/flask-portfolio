@@ -1,0 +1,164 @@
+/* Indiana Pacers Color Scheme */
+:root {
+    --pacers-navy: #002D62;
+    --pacers-gold: #FDBB30;
+    --pacers-red: #CE1141;
+    --pacers-white: #FFFFFF;
+    --pacers-light-gray: #F8F9FA;
+    --pacers-dark-gray: #333333;
+    --bg: var(--pacers-light-gray);
+    --fg: var(--pacers-dark-gray);
+    --muted: #6b7280;
+    --brand: var(--pacers-navy);
+    --border: #e5e7eb;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+/* Prevent layout shift when some pages have vertical scrollbars */
+html { scrollbar-gutter: stable; }
+/* Fallback for browsers without scrollbar-gutter */
+body { overflow-y: scroll; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: var(--fg); background: var(--bg); display: flex; flex-direction: column; }
+
+header { background: var(--brand); color: var(--pacers-white); }
+header nav { max-width: 1000px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+/* Logo removed */
+
+/* Hide the h1 text in navbar */
+header nav h1 {
+    display: none;
+}
+header nav a { color: var(--pacers-white); text-decoration: none; padding: .25rem .5rem; border-radius: 4px; font-weight: 500; transition: color 0.3s ease; }
+header nav a:hover, header nav a:focus { color: var(--pacers-gold); background: rgba(253, 187, 48, 0.1); outline: none; }
+
+main { max-width: 1000px; width: 100%; margin: 1.5rem auto; padding: 0 1.25rem; flex: 1; background-color: var(--pacers-white); border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 45, 98, 0.1); }
+
+h1 { font-size: 2rem; margin: 0 0 .75rem 0; color: var(--pacers-navy); border-bottom: 3px solid var(--pacers-gold); padding-bottom: 0.5rem; }
+h2 { font-size: 1.25rem; margin: 1.25rem 0 .5rem; color: var(--pacers-navy); }
+h3 { color: var(--pacers-red); margin-bottom: 0.5rem; }
+p { line-height: 1.7; color: var(--pacers-dark-gray); }
+ul { padding-left: 1.1rem; }
+
+.card { background: var(--pacers-white); border: 2px solid var(--pacers-gold); border-radius: 8px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(0, 45, 98, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 45, 98, 0.15); }
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
+.grid > * { grid-column: span 12; }
+
+/* Responsive breakpoints */
+@media (min-width: 640px) {
+    .grid.cols-2 > * { grid-column: span 6; }
+}
+@media (min-width: 960px) {
+    .grid.cols-3 > * { grid-column: span 4; }
+}
+
+/* Forms */
+form { display: grid; gap: .5rem; max-width: 560px; background-color: var(--pacers-white); padding: 2rem; border-radius: 8px; border: 2px solid var(--pacers-gold); box-shadow: 0 2px 8px rgba(0, 45, 98, 0.1); }
+label { font-weight: 600; color: var(--pacers-navy); }
+input, textarea, select { width: 100%; padding: .6rem .7rem; border: 2px solid #ddd; border-radius: 6px; font: inherit; transition: border-color 0.3s ease; }
+input:focus, textarea:focus, select:focus { outline: none; border-color: var(--pacers-gold); box-shadow: 0 0 0 3px rgba(253, 187, 48, 0.2); }
+button { padding: .6rem 1rem; background: var(--brand); color: var(--pacers-white); border: none; border-radius: 6px; cursor: pointer; width: fit-content; font-weight: 600; transition: background-color 0.3s ease; }
+button:hover { background: var(--pacers-red); }
+
+/* Error Messages */
+.error {
+    color: var(--pacers-red);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(206, 17, 65, 0.1);
+    border-left: 4px solid var(--pacers-red);
+    border-radius: 4px;
+}
+
+/* Contact Info Styles */
+.contact-info {
+    background-color: var(--pacers-light-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--pacers-gold);
+    margin-bottom: 2rem;
+}
+
+.contact-info a {
+    color: var(--pacers-navy);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-info a:hover {
+    color: var(--pacers-red);
+}
+
+/* Resume Styles */
+.resume-section {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--pacers-light-gray);
+    border-radius: 8px;
+    border-left: 4px solid var(--pacers-gold);
+}
+
+.resume-section h3 {
+    color: var(--pacers-navy);
+    margin-top: 0;
+}
+
+/* Project Card Styles */
+.project-card {
+    background-color: var(--pacers-white);
+    border: 2px solid var(--pacers-gold);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 45, 98, 0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.project-card a {
+    color: var(--pacers-navy);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.project-card a:hover {
+    color: var(--pacers-red);
+}
+
+/* Footer */
+footer { border-top: 1px solid var(--border); margin-top: 2rem; background-color: var(--pacers-navy); color: var(--pacers-white); }
+footer .inner { max-width: 1000px; margin: 0 auto; padding: 1rem 1.25rem; color: var(--pacers-white); font-size: .9rem; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    header nav a {
+        margin-left: 0;
+        margin-right: 1rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

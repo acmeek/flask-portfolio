@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contact | Andrew Meek</title>
+	<link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<h1>Andrew Meek</h1>
+			<a href="/">Home</a>
+			<a href="/about">About Me</a>
+			<a href="/resume">Resume</a>
+			<a href="/projects">Projects</a>
+			<a href="/contact">Contact</a>
+		</nav>
+	</header>
+	<main>
+		<h1>Contact</h1>
+		
+		<div class="contact-info">
+			<p><strong>Get in Touch</strong></p>
+			<p>Email: <a href="mailto:andmeek@iu.edu">andmeek@iu.edu</a> · LinkedIn: <a href="https://www.linkedin.com/in/andrewcmeek" target="_blank" rel="noopener">andrewcmeek</a> · GitHub: <a href="https://github.com/acmeek" target="_blank" rel="noopener">My Github</a></p>
+		</div>
+
+		<form method="post" novalidate>
+			<label for="first_name">First Name</label>
+			<input id="first_name" name="first_name" type="text" required placeholder="First name" />
+
+			<label for="last_name">Last Name</label>
+			<input id="last_name" name="last_name" type="text" required placeholder="Last name" />
+
+			<label for="email">Email Address</label>
+			<input id="email" name="email" type="email" required placeholder="name@example.com" />
+
+			<label for="password">Password</label>
+			<input id="password" name="password" type="password" required minlength="8" placeholder="At least 8 characters" />
+
+			<label for="confirm_password">Confirm Password</label>
+			<input id="confirm_password" name="confirm_password" type="password" required minlength="8" placeholder="Re-enter password" />
+
+			<div id="errors" aria-live="polite" class="error" style="display: none;"></div>
+
+			<button type="submit">Send</button>
+		</form>
+
+		<script>
+		(function(){
+			const form = document.querySelector('form');
+			const pw = document.getElementById('password');
+			const cpw = document.getElementById('confirm_password');
+			const email = document.getElementById('email');
+			const errorsDiv = document.getElementById('errors');
+			form.addEventListener('submit', function(e){
+				const errors = [];
+				if (pw.value.length < 8) errors.push('Password must be at least 8 characters.');
+				if (pw.value !== cpw.value) errors.push('Passwords must match.');
+				if (!email.checkValidity()) errors.push('Enter a valid email address.');
+				if (errors.length){
+					e.preventDefault();
+					errorsDiv.textContent = errors.join(' ');
+					errorsDiv.style.display = 'block';
+				} else {
+					errorsDiv.textContent = '';
+					errorsDiv.style.display = 'none';
+				}
+			});
+		})();
+		</script>
+	</main>
+	<footer>
+		<div class="inner">© Andrew Meek • Updated for Assignment 5</div>
+	</footer>
+</body>
+</html>
+
+

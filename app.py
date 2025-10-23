@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from DAL import ProjectDAL
 
 app = Flask(__name__)
 
@@ -17,7 +18,27 @@ def resume():
 
 @app.route("/projects")
 def projects():
-	return render_template("projects.html")
+	items = ProjectDAL.get_all_projects()
+	return render_template("projects.html", projects=items)
+
+@app.route("/projects/new", methods=["GET", "POST"])
+def new_project():
+	if request.method == "POST":
+		title = request.form.get("Title", "").strip()
+		description = request.form.get("Description", "").strip()
+		image_filename = request.form.get("ImageFileName", "").strip()
+
+		errors = []
+		if not title:
+			errors.append("Title is required.")
+		if errors:
+			for msg in errors:
+				flash(msg, "error")
+			return render_template("form.html"), 400
+
+		ProjectDAL.add_new_project(title, description, image_filename)
+		return redirect(url_for("projects"))
+	return render_template("form.html")
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
@@ -57,6 +78,8 @@ def thankyou():
 if __name__ == "__main__":
 	# needed for flash messages
 	app.secret_key = "dev-secret"
-	app.run(debug=True)
+	# ensure database and initial data
+	ProjectDAL.initialize_db()
+	app.run(host='0.0.0.0', port=5000, debug=True)
 
 

@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Projects | Andrew Meek</title>
-	<link rel="stylesheet" href="/static/css/styles.css">
+	<link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 	<header>
@@ -16,26 +16,39 @@
 			<a href="/contact">Contact</a>
 		</nav>
 	</header>
+	<form method="get" action="{{ url_for('new_project') }}" style="max-width:1000px;margin:1rem auto 0; padding: 0 1.25rem;">
+		<button type="submit">Add New Project</button>
+	</form>
 	<main>
 		<h1>Projects</h1>
-		<div class="grid cols-2">
-			<div class="card">
-				<img src="/static/images/Campus-Cravings.png" alt="Campus Cravings capstone project image" style="width:100%;height:auto;border-radius:6px;margin-bottom:0.5rem;" />
-				<h3>Campus Cravings</h3>
-				<p>Full‑stack web app connecting IU students with local restaurant deals. PHP/MySQL backend with responsive frontend; user testing informed navigation and filtering.</p>
-				<p>
-					<a href="https://github.iu.edu/info-capstone-2025/team-43" target="_blank" rel="noopener">Repository (IU GitHub Enterprise)</a>
-				</p>
-			</div>
-			<div class="card">
-				<img src="/static/images/Fantasy-football.png" alt="Fantasy Football Predictions project image" style="width:100%;height:auto;border-radius:6px;margin-bottom:0.5rem;" />
-				<h3>Fantasy Football Predictions</h3>
-				<p>Python tooling and visualizations (Seaborn/Matplotlib) forecasting fantasy performance from historical NFL data; translates stats into draft insights.</p>
-				<p>
-					<a href="https://docs.google.com/document/d/1sVogvrJO3Bdt42y7-pkssGRBsLHJysxnSRE7VZx5T8w/edit?usp=sharing" target="_blank" rel="noopener">Report (Google Doc)</a>
-				</p>
-			</div>
-		</div>
+		{% if projects %}
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Title</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for project in projects %}
+				<tr>
+					<td>
+						{% if project['ImageFileName'] %}
+						<img src="{{ url_for('static', filename='images/' + project['ImageFileName']) }}" alt="{{ project['Title'] }}" style="width:160px;height:auto;border-radius:6px;" />
+						{% else %}
+						<span>No image</span>
+						{% endif %}
+					</td>
+					<td>{{ project['Title'] }}</td>
+					<td>{{ project['Description'] }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<div class="card">No projects yet. <a href="{{ url_for('new_project') }}">Add one</a>.</div>
+		{% endif %}
 	</main>
 	<footer>
 		<div class="inner">© Andrew Meek • Updated for Assignment 5</div>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Add Project | Andrew Meek</title>
+	<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="/">Home</a>
+			<a href="/about">About Me</a>
+			<a href="/resume">Resume</a>
+			<a href="/projects">Projects</a>
+			<a href="/contact">Contact</a>
+		</nav>
+	</header>
+	<main>
+		<h1>Add New Project</h1>
+		<form method="post" action="{{ url_for('new_project') }}" class="card">
+			<div class="form-row">
+				<label for="Title">Title<span style="color:red">*</span></label>
+				<input type="text" id="Title" name="Title" required />
+			</div>
+			<div class="form-row">
+				<label for="Description">Description</label>
+				<textarea id="Description" name="Description" rows="4"></textarea>
+			</div>
+			<div class="form-row">
+				<label for="ImageFileName">Image File Name</label>
+				<input type="text" id="ImageFileName" name="ImageFileName" placeholder="e.g., project1.jpg" />
+			</div>
+			<div class="form-row">
+				<button type="submit">Save Project</button>
+				<a href="{{ url_for('projects') }}" class="button-link" style="margin-left:1rem;">Cancel</a>
+			</div>
+		</form>
+	</main>
+	<footer>
+		<div class="inner">© Andrew Meek • Updated for Assignment 5</div>
+	</footer>
+</body>
+</html>
+
+

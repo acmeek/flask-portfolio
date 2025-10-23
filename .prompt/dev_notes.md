@@ -28,3 +28,7 @@
 - [x] Prompt: "Site-wide styling with external CSS, responsive layout, semantic structure."
   - Result: Added `static/css/styles.css`, linked from all templates; added footer; standardized layout and responsive grid.
   - Feedback: Consistent look across pages; easy to tweak colors and spacing via CSS variables.
+
+- [x] Prompt: "Implement a Data Access Layer (SQLite) and integrate into Projects/Form."
+  - Result: Created `DAL.py` with `initialize_db`, `get_all_projects`, `add_new_project`; updated `app.py` routes (`/projects`, `/projects/new`); updated `projects.html` to iterate and render table with images; added `form.html`; seeded two initial records; wrote `.prompt/dev_notes.md`.
+  - Notes: DB path `assignments/assignment-5/projects.db`. Images must exist in `static/images/` matching `ImageFileName`.
